@@ -74,6 +74,7 @@ public class Login extends AppCompatActivity {
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), RestaurantList.class));
                 final String Emails = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
                 if (TextUtils.isEmpty(Emails)) {
@@ -145,11 +146,12 @@ public class Login extends AppCompatActivity {
             }
         });
         mGoogleCust.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 Intent signInIntent = mGoogleSignInClient.getSignInIntent();
                 startActivityForResult(signInIntent, RC_SIGN_IN_C);
-                    startActivity(new Intent(Login.this, Register.class));
+                startActivity(new Intent(Login.this, Register.class));
                 //       startActivity(new Intent(Login.this, CustomerDashboard.class));
             }
         });

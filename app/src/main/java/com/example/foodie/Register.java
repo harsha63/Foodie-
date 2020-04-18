@@ -30,7 +30,7 @@ public class Register extends AppCompatActivity {
     public static final String TAG = "TAG";
     private EditText mFullName, mEmail, mPassword,mPhone;
     private Button mRegisterCust;
-    private Button mLoginButton;
+    private TextView mLoginButton;
     private Button mRegisterDel;
     FirebaseAuth mFAuth;
     ProgressBar mProgressBar;
@@ -56,6 +56,7 @@ public class Register extends AppCompatActivity {
         mRegisterCust.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), CustomerDashboard.class));
                 final String Emails = mEmail.getText().toString().trim();
                 final String password = mPassword.getText().toString().trim();
                 final String name = mFullName.getText().toString().trim();

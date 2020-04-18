@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/foo">
+
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="271dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:fontFamily="cursive"
+        android:text="  Foodie!"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.202" />
+
+    <EditText
+        android:id="@+id/Email2"
+        android:layout_width="321dp"
+        android:layout_height="58dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textPersonName"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/pass2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.69"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView21"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/pass2"
+        android:layout_width="314dp"
+        android:layout_height="54dp"
+        android:ems="10"
+        android:hint="@string/fui_password_hint"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/registering2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.72"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Email2"
+        app:layout_constraintVertical_bias="0" />
+
+    <Button
+        android:id="@+id/registering2"
+        android:layout_width="100dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="56dp"
+        android:text="Login"
+        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.69"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pass2"
+        app:layout_constraintVertical_bias="0.50" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="104dp"
+        android:layout_height="88dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView21"
+        app:layout_constraintVertical_bias="0.94" />
+
+    <TextView
+        android:id="@+id/Reg"
+        android:layout_width="130dp"
+        android:layout_height="28dp"
+        android:text="New User? Sign In"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registering2"
+        app:layout_constraintVertical_bias="0.10" />
+
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/signInButtonCust"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Reg"
+        app:layout_constraintVertical_bias="0.116" />
+
+    <TextView
+        android:id="@+id/asCUst"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:background="#00673AB7"
+        android:text="HUNGRY CUSTOMER?"
+        android:textColor="#171717"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.21"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signInButtonCust" />
+
+    <TextView
+        android:id="@+id/asDel"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:text="DELIVERY BOY?"
+        android:textColor="#090909"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.886"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signInButtonDel" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/signInButtonDel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.83"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Reg"
+        app:layout_constraintVertical_bias="0.116" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,7 +34,6 @@ import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
 import java.util.Map;
-
 public class Login extends AppCompatActivity {
     public static final String TAG = "TAGGING IN HERE";
     private static final int RC_SIGN_IN_D = 0;
@@ -109,11 +108,12 @@ public class Login extends AppCompatActivity {
                                             Log.d(TAG, "The value of cust is: "+ cust);
                                             if(cust == 1)
                                             {
-                                                //startActivity(new Intent(getApplicationContext(), CustomerDashboard.class));
+                                                startActivity(new Intent(getApplicationContext(), Customer.class));
+                                                //startActivity(new Intent(getApplicationContext(), Restaurant.class));
                                             }
                                             else
                                             {
-                                               // startActivity(new Intent(getApplicationContext(), DriverHomePage.class));
+                                               startActivity(new Intent(getApplicationContext(), Delivery.class));
                                             }
 
                                         } else {
@@ -140,6 +140,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 Intent signInIntent = mGoogleSignInClient.getSignInIntent();
                 startActivityForResult(signInIntent, RC_SIGN_IN_D);
+                startActivity(new Intent(Login.this, Delivery.class));
                 //         startActivity(new Intent(Login.this, MainActivity.class));
             }
         });
@@ -148,6 +149,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 Intent signInIntent = mGoogleSignInClient.getSignInIntent();
                 startActivityForResult(signInIntent, RC_SIGN_IN_C);
+                    startActivity(new Intent(Login.this, Register.class));
                 //       startActivity(new Intent(Login.this, CustomerDashboard.class));
             }
         });

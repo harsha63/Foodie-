@@ -30,7 +30,7 @@ public class Register extends AppCompatActivity {
     public static final String TAG = "TAG";
     private EditText mFullName, mEmail, mPassword,mPhone;
     private Button mRegisterCust;
-    private TextView mLoginButton;
+    private Button mLoginButton;
     private Button mRegisterDel;
     FirebaseAuth mFAuth;
     ProgressBar mProgressBar;
@@ -77,6 +77,7 @@ public class Register extends AppCompatActivity {
                     return;
                 }
                 mProgressBar.setVisibility(View.VISIBLE);
+
                 mFAuth.createUserWithEmailAndPassword(Emails,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -102,7 +103,7 @@ public class Register extends AppCompatActivity {
                                     Log.d(TAG, "onFailure: " + e.toString());
                                 }
                             });
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(), CustomerDashboard.class));
                         }
 
                         else
@@ -164,7 +165,7 @@ public class Register extends AppCompatActivity {
                                     Log.d(TAG, "onFailure: " + e.toString());
                                 }
                             });
-                            startActivity(new Intent(getApplicationContext(),RestaurantList.class));
+                            //startActivity(new Intent(getApplicationContext(), RestaurantList.class));
                         }
 
                         else

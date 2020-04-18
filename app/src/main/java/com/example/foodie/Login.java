@@ -109,11 +109,11 @@ public class Login extends AppCompatActivity {
                                             Log.d(TAG, "The value of cust is: "+ cust);
                                             if(cust == 1)
                                             {
-                                                //startActivity(new Intent(getApplicationContext(), CustomerDashboard.class));
+                                                startActivity(new Intent(getApplicationContext(), Customer.class));
                                             }
                                             else
                                             {
-                                               // startActivity(new Intent(getApplicationContext(), DriverHomePage.class));
+                                                startActivity(new Intent(getApplicationContext(), Delivery.class));
                                             }
 
                                         } else {

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import javax.annotation.Nullable;
 
 public class DeliveryboyDashboard extends AppCompatActivity {
+    private static final String TAG = "999999999999" ;
     TextView fullName,email;
     Button edit;
     FirebaseAuth fAuth;
@@ -29,7 +31,7 @@ public class DeliveryboyDashboard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.delivery_dashboard);
         fullName = findViewById(R.id.profileName);
         email    = findViewById(R.id.profileEmail);
         edit= findViewById(R.id.button2);
@@ -46,11 +48,12 @@ public class DeliveryboyDashboard extends AppCompatActivity {
             }
         });
 
-        DocumentReference documentReference = fStore.collection("users").document(userId);
+        DocumentReference documentReference = fStore.collection("Customers").document(userId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                 fullName.setText(documentSnapshot.getString("fName"));
+                Log.d(TAG,documentSnapshot.getString("fName")+"Hello");
                 email.setText(documentSnapshot.getString("email"));
             }
         });

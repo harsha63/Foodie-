@@ -105,7 +105,7 @@ public class Login extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         DocumentSnapshot document = task.getResult();
                                         if (document.exists()) {
-                                            cust = document.getDouble("com.example.foodie.Login.Customer");
+                                            cust = document.getDouble("Customer");
                                             Log.d(TAG, "The value of cust is: "+ cust);
                                             if(cust == 1)
                                             {
@@ -140,7 +140,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 Intent signInIntent = mGoogleSignInClient.getSignInIntent();
                 startActivityForResult(signInIntent, RC_SIGN_IN_D);
-                         startActivity(new Intent(Login.this, DeliveryboyDashboard.class));
+                startActivity(new Intent(Login.this, DeliveryboyDashboard.class));
             }
         });
         mGoogleCust.setOnClickListener(new View.OnClickListener() {
@@ -148,7 +148,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 Intent signInIntent = mGoogleSignInClient.getSignInIntent();
                 startActivityForResult(signInIntent, RC_SIGN_IN_C);
-                       startActivity(new Intent(Login.this, CustomerDashboard.class));
+                startActivity(new Intent(Login.this, CustomerDashboard.class));
             }
         });
     }

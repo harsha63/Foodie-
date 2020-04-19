@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Register extends AppCompatActivity {
-    public static final String TAG = "TAG";
+    public static final String TAG = "88888888888888888";
     private EditText mFullName, mEmail, mPassword,mPhone;
     private Button mRegisterCust;
     private TextView mLoginButton;
@@ -90,7 +90,7 @@ public class Register extends AppCompatActivity {
                             user.put("email",Emails);
                             user.put("password",password);
                             user.put("Phone number",phone);
-                            user.put("com.example.foodie.Login.Customer",1);
+                            user.put("Customer",1);
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
@@ -152,7 +152,7 @@ public class Register extends AppCompatActivity {
                             user.put("email",Emails);
                             user.put("password",password);
                             user.put("Phone number",phone);
-                            user.put("com.example.foodie.Login.Customer",0);
+                            user.put("Customer",0);
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {

@@ -16,7 +16,7 @@
         <activity android:name=".RestaurantList" />
         <activity android:name=".Customer" />
         <activity android:name=".Delivery"/>
-        <activity android:name=".RestaurantList"/>
+        <activity android:name=".DeliveryboyDashboard"/>
         <activity android:name=".MainActivity"/>
         <activity android:name=".Login">
             <intent-filter>
@@ -24,7 +24,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".CustomerDashboard" />
     </application>
 
 </manifest>

@@ -21,6 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/neverToUse"
+        android:scrollbars="vertical"
+        android:background="#B0B0B0"
         android:id="@+id/driverOrders"/>
 
 </RelativeLayout>

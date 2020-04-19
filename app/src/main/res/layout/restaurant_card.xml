@@ -46,7 +46,7 @@
             android:layout_toEndOf="@+id/image1"
             tools:ignore="HardcodedText" />
         <ImageButton
-            android:id="@+id/button"
+            android:id="@+id/imgButton"
             android:contentDescription="Next"
             android:layout_width="70dp"
             android:layout_height="50dp"

@@ -11,10 +11,13 @@ public class Restaurant {
     public int getImage(){
         return mImage;
     }
-    public String getNameRest(){
+    public String getName(){
         return mText1;
     }
     public String getDescription(){
         return mText2;
+    }
+    public void changeDescrip(String text){
+        mText2=text;
     }
 }

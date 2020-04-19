@@ -66,16 +66,16 @@ public class RestaurantList extends AppCompatActivity {
                 });
             }
         })
-        .addOnFailureListener(new OnFailureListener(){
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(RestaurantList.this, "", Toast.LENGTH_SHORT).show();
-                Log.v("Failed", e.getMessage());
-                fillRestName();
-                setUpRecyclerView();
+                .addOnFailureListener(new OnFailureListener(){
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(RestaurantList.this, "", Toast.LENGTH_SHORT).show();
+                        Log.v("Failed", e.getMessage());
+                        fillRestName();
+                        setUpRecyclerView();
 
-            }
-        });
+                    }
+                });
     }
     public void fillRestName(){
         restaurantList = new ArrayList<>();

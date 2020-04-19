@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/foo"
-    tools:context=".EditDel">
+    tools:context=".Delivery">
 
     <TextView
         android:id="@+id/textView2"

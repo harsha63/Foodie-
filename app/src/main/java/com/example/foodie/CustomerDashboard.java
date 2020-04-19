@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
 public class CustomerDashboard extends AppCompatActivity {
     private static final String TAG = "99999999999999";
     TextView fullName,email;
-    Button b,r;
+    Button b,r,order;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userId;
@@ -37,6 +37,7 @@ public class CustomerDashboard extends AppCompatActivity {
         email    = findViewById(R.id.profileEmail);
         b=findViewById(R.id.button2);
         r=findViewById(R.id.button4);
+        order=findViewById(R.id.button);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
 
@@ -63,7 +64,12 @@ public class CustomerDashboard extends AppCompatActivity {
                 email.setText(documentSnapshot.getString("email"));
             }
         });
-
+        order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), OrderTracking.class));
+            }
+        });
 
     }
 

@@ -22,5 +22,15 @@
 
     <include layout="@layout/content_main2" />
 
+    <Button
+        android:id="@+id/goToDeliveryOrders"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Want to Deliver Orders?"
+        tools:ignore="HardcodedText"
+        android:layout_marginTop="600dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

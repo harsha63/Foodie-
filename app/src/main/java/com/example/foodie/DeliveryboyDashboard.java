@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
 public class DeliveryboyDashboard extends AppCompatActivity {
     private static final String TAG = "999999999999" ;
     TextView fullName,email;
-    Button edit;
+    Button edit,deliver;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userId;
@@ -35,6 +35,7 @@ public class DeliveryboyDashboard extends AppCompatActivity {
         fullName = findViewById(R.id.profileName);
         email    = findViewById(R.id.profileEmail);
         edit= findViewById(R.id.button2);
+        deliver=findViewById(R.id.goToDeliveryOrders);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -47,7 +48,12 @@ public class DeliveryboyDashboard extends AppCompatActivity {
                 startActivity(new Intent(DeliveryboyDashboard.this,Delivery.class));
             }
         });
-
+        deliver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DeliveryboyDashboard.this,DeliveryGuyOrder.class));
+            }
+        });
         DocumentReference documentReference = fStore.collection("Customers").document(userId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override

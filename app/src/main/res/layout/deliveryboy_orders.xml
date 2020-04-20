@@ -1,28 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/neverToUse"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:text="Orders to be Delivered"
-        android:padding="2dp"
-        android:paddingLeft="20dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:textSize="27sp"
-        android:textColor="#FFFFFF"
-        android:background="#BA456E"
-        tools:ignore="HardcodedText" />
+    android:layout_height="match_parent"
+    tools:context=".DeliveryGuyOrder">
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/neverToUse"
-        android:scrollbars="vertical"
-        android:background="#B0B0B0"
-        android:id="@+id/driverOrders"/>
+        android:id="@+id/recyclerView" />
+
 
 </RelativeLayout>

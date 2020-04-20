@@ -16,5 +16,4 @@ public class MenuObject {
     public int[] getPrice(){
         return price;
     }
-
 }

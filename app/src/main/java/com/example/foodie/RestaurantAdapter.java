@@ -28,21 +28,46 @@ import java.util.List;
 
 import static androidx.core.content.ContextCompat.startActivity;
 
-public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder> {
-    private ArrayList<Restaurant> mRestList;
+import android.content.Context;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+//import com.google.api.Context;
+
+public class RestaurantAdapter extends  RecyclerView.Adapter<RestaurantAdapter.OrderViewHolder> {
+    private static final String TAG = "ADAPTER CONSTRUCTOR";
+    private Context context;
+    DeliveryGuyOrder driverOrders;
+    List<String> IDs;
+    private List<Restaurant> RestroList ;
     FirebaseFirestore fStore;
     FirebaseAuth mFAuth;
     String UserID,name,phone;
-    private OnItemClickListener mListener;
 
-    private static final String TAG = "ADAPTER";
-    private Context context;
-    //Orders driverOrders;
-    List<String> IDs;
 
-    public RestaurantAdapter(ArrayList<Restaurant> restList) {
-        mRestList=restList;
 
+
+    public RestaurantAdapter(Context context, List<Restaurant> RestroList) {
+        this.context = context;
+        this.RestroList = RestroList;
         mFAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         UserID = mFAuth.getUid();
@@ -63,69 +88,54 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
                 }
             }
         });
-    }
 
-    public interface OnItemClickListener{
-        void onItemClick(int position);
-    }
-    public void setOnItemClickListener(OnItemClickListener listener){
-        mListener=listener;
-    }
-
-    public static class RestaurantViewHolder extends RecyclerView.ViewHolder {
-
-        public ImageView mImageView;
-        public TextView mText1;
-        public TextView mText2;
-        public ImageButton mNext;
-
-        public RestaurantViewHolder(View itemView, final OnItemClickListener listener) {
-            super(itemView);
-            mImageView = itemView.findViewById(R.id.image1);
-            mText1 =itemView.findViewById(R.id.text1);
-            mText2 =itemView.findViewById(R.id.text2);
-            mNext = itemView.findViewById(R.id.imgButton);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (listener != null){
-                        int position = getAdapterPosition();
-                        if(position!=RecyclerView.NO_POSITION){
-                            listener.onItemClick(position);
-                        }
-                    }
-                }
-            });
-            //itemView.setOnClickListener();
-            mNext.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //startActivity(new Intent( getApplicationContext(),MenuList.class));
-                }
-            });
-        }
     }
 
     @NonNull
     @Override
-    public RestaurantViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
-        View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.restaurant_card, parent, false);
-        RestaurantViewHolder rvh;
-        rvh = new RestaurantViewHolder(v, mListener);
-        return rvh;
+    public OrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.list1, null, false);
+        OrderViewHolder orderViewHolder = new OrderViewHolder(view);
+        return orderViewHolder;
     }
-    @Override
-    public void onBindViewHolder( RestaurantViewHolder holder, int position) {
-        Restaurant currentRest = mRestList.get(position);
 
-        holder.mImageView.setImageResource(currentRest.getImage());
-        holder.mText1.setText(currentRest.getName());
-        holder.mText2.setText(currentRest.getDescription());
+    @Override
+    public void onBindViewHolder(@NonNull OrderViewHolder holder, final int position) {
+        Restaurant restros = RestroList.get(position);
+        holder.textViewRest.setText(restros.getName());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DocumentReference documentReference = fStore.collection("Orders").document(UserID);
+                Map<String,Object> user = new HashMap<>();
+                user.put("RestroID", RestroList.get(position).getID());
+                user.put("Restaurant",RestroList.get(position).getName());
+                user.put("UserID",UserID);
+                user.put("UserName",name);
+                user.put("UserPhone",phone);
+                user.put("Assigned",false);
+                user.put("Status",1);
+                documentReference.set(user);
+                Toast.makeText(v.getContext(), RestroList.get(position).getName() + " " + "Selected!", Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
+
     @Override
     public int getItemCount() {
-        return mRestList.size();
+        return RestroList.size();
     }
 
+    class OrderViewHolder extends RecyclerView.ViewHolder{
+        TextView textViewRest;/*, textViewPrice*/;
+        /*        Button decline, accept;*/
 
+
+        public OrderViewHolder(@NonNull View itemView) {
+            super(itemView);
+            textViewRest = itemView.findViewById(R.id.Minion);
+        }
+    }
 }

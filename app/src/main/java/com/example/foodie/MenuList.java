@@ -1,5 +1,6 @@
 package com.example.foodie;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -28,16 +29,41 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class MenuList extends AppCompatActivity {
-    //private TextView textView;
-    private static final String TAG ="MENU";
-    RecyclerView mRecyclerView;
-    com.example.foodie.MenuAdapter mAdapter;
-    List<MenuObject>  menuList;
+    private static final String TAG = "HELLO";
+    RecyclerView recyclerView;
+    MenuAdapter adapter;
+    List<MenuObject> M;
     FirebaseAuth mFAuth;
     FirebaseFirestore fStore;
     Button bt;
-    String UserId, restaurantID;
+    String UserId, RestroID;
 
     public static int[] convertIntegers(List<Long> integers)
     {
@@ -50,32 +76,32 @@ public class MenuList extends AppCompatActivity {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.restaurant_menu);
-        //textView=findViewById(R.id.srymsg);
+        setContentView(R.layout.menulist);
         fStore = FirebaseFirestore.getInstance();
         mFAuth = FirebaseAuth.getInstance();
-        menuList = new ArrayList<MenuObject>();
-        mRecyclerView = findViewById(R.id.menuList);
-        mRecyclerView.setHasFixedSize(true);
-        //bt = findViewById(R.id.order);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        if(menuList.size()>0){
-            menuList.clear();
+        M = new ArrayList<MenuObject>();
+        recyclerView = findViewById(R.id.recyclerView2);
+        recyclerView.setHasFixedSize(true);
+        bt = findViewById(R.id.order);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        if(M.size()>0){
+            M.clear();
         }
         String userId = mFAuth.getUid();
-        DocumentReference documentReference = fStore.collection("Orders").document(userId);
-        documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        DocumentReference D = fStore.collection("Orders").document(userId);
+        D.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        restaurantID = document.getString("Menu");
-                        Log.d(TAG, restaurantID+ " is the ID");
-                        fStore.collection("Restaurants").document(restaurantID).collection("FoodItems").get()
+                        RestroID = document.getString("RestroID");
+                        Log.d(TAG, RestroID+ " is the ID");
+                        fStore.collection("RestaurantList").document(RestroID).collection("FoodItems").get()
                                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                    @SuppressLint("RestrictedApi")
                                     @Override
                                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                         for(DocumentSnapshot documentSnapshot : task.getResult()){
@@ -94,13 +120,13 @@ public class MenuList extends AppCompatActivity {
                                                 Log.d(TAG,mapElement.getValue().getClass().getName()+"Is the target");
                                                 int[] arr1 = convertIntegers((List<Long>) mapElement.getValue());
                                                 MenuObject restru = new MenuObject(key,arr1);
-                                                menuList.add(restru);
+                                                M.add(restru);
                                                 Log.d(TAG, "MenuListAdded");
                                             }
 
                                         }
-                                        //mAdapter = new MenuAdapter(MenuList.this, MenuList);
-                                        mRecyclerView.setAdapter(mAdapter);
+                                        //adapter = new MenuAdapter(MenuList.this,M);
+                                       //recyclerView.setAdapter(adapter);
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {
@@ -118,12 +144,15 @@ public class MenuList extends AppCompatActivity {
                 }
             }
         });
+
+
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(getApplicationContext(),CustomerLocation.class));
+                startActivity(new Intent(getApplicationContext(),CustomerLocation.class));
             }
         });
+
 
 
     }

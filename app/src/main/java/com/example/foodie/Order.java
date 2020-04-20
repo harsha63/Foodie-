@@ -12,7 +12,7 @@ public class Order {
         this.uName = uName;
         this.uPhone = uPhone;
         this.amount = amount;
-        //this.assigned = assigned;
+        /*  this.assigned = assigned;*/
     }
 
     public String getId() {
@@ -31,7 +31,7 @@ public class Order {
         return uPhone;
     }
 
-    //  public String getAssigned(){return assigned.toString();}
+    /*  public String getAssigned(){return assigned.toString();}*/
 
     public double getAmount() {
         return amount;

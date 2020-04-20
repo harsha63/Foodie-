@@ -25,15 +25,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//import com.google.api.Context;
 
-public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.OrderViewHolder>{
+public class MenuAdapter extends  RecyclerView.Adapter<MenuAdapter.OrderViewHolder> {
     private static final String TAG ="MENU ADAPTER" ;
     private Context context;
+    DeliveryGuyOrder driverOrders;
     private List<MenuObject> MenuList ;
     FirebaseFirestore fStore;
     FirebaseAuth mFAuth;
     String UserID,name,phone;
 
+    //FirebaseUser User;
 
     public MenuAdapter(Context context, List<MenuObject> ordersList) {
         this.context = context;
@@ -60,37 +63,24 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.OrderViewHolde
         });
     }
 
-    class OrderViewHolder extends RecyclerView.ViewHolder{
-        TextView textViewName, priceOne,priceTwo,priceThree,priceFour;
-        /*        Button decline, accept;*/
-        public OrderViewHolder(@NonNull View itemView) {
-            super(itemView);
-            textViewName = itemView.findViewById(R.id.item_name);
-            priceOne = itemView.findViewById(R.id.price1);
-            priceTwo = itemView.findViewById(R.id.price2);
-            priceThree = itemView.findViewById(R.id.price3);
-
-        }
-    }
-
     @NonNull
     @Override
     public OrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.menu_card, null, false);
-        OrderViewHolder ovh = new OrderViewHolder(view);
-        return ovh;
+        View view = inflater.inflate(R.layout.list2, null, false);
+        OrderViewHolder orderViewHolder = new OrderViewHolder(view);
+        return orderViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MenuAdapter.OrderViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull OrderViewHolder holder, final int position) {
         MenuObject items = MenuList.get(position);
         int[] arr = items.getPrice();
         holder.textViewName.setText(items.getName());
         holder.priceOne.setText(arr[0]+" ");
         holder.priceTwo.setText(arr[1]+" ");
         holder.priceThree.setText(arr[2]+" ");
-
+        holder.priceFour.setText(arr[2]+" ");
         holder.priceOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,7 +88,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.OrderViewHolde
                 Map<String,Object> user = new HashMap<>();
                 user.put("MenuItem",MenuList.get(position).getName());
                 int[] arr = MenuList.get(position).getPrice();
-                user.put("Price", 0.2*arr[0]);
+                user.put("Price",arr[0]);
                 documentReference.set(user, SetOptions.merge());
                 Toast.makeText(v.getContext(), MenuList.get(position).getName() + " " +arr[0]+ " Selected!", Toast.LENGTH_SHORT).show();
             }
@@ -110,9 +100,9 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.OrderViewHolde
                 Map<String,Object> user = new HashMap<>();
                 user.put("MenuItem",MenuList.get(position).getName());
                 int[] arr = MenuList.get(position).getPrice();
-                user.put("Price", 0.2*arr[1]);
+                user.put("Price",arr[1]);
                 documentReference.set(user, SetOptions.merge());
-                Toast.makeText(v.getContext(), MenuList.get(position).getName() + " " +arr[1]+ " Selected!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), MenuList.get(position).getName() + " " +arr[0]+ " Selected!", Toast.LENGTH_SHORT).show();
             }
         });
         holder.priceThree.setOnClickListener(new View.OnClickListener() {
@@ -122,9 +112,21 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.OrderViewHolde
                 Map<String,Object> user = new HashMap<>();
                 user.put("MenuItem",MenuList.get(position).getName());
                 int[] arr = MenuList.get(position).getPrice();
-                user.put("Price", 0.2*arr[2]);
+                user.put("Price",arr[2]);
                 documentReference.set(user, SetOptions.merge());
-                Toast.makeText(v.getContext(), MenuList.get(position).getName() + " " +arr[2]+ " Selected!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), MenuList.get(position).getName() + " " +arr[0]+ " Selected!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        holder.priceFour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DocumentReference documentReference = fStore.collection("Orders").document(UserID);
+                Map<String,Object> user = new HashMap<>();
+                user.put("MenuItem",MenuList.get(position).getName());
+                int[] arr = MenuList.get(position).getPrice();
+                user.put("Price",arr[2]);
+                documentReference.set(user, SetOptions.merge());
+                Toast.makeText(v.getContext(), MenuList.get(position).getName() + " " +arr[0]+ " Selected!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -133,5 +135,21 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.OrderViewHolde
     @Override
     public int getItemCount() {
         return MenuList.size();
+    }
+
+    class OrderViewHolder extends RecyclerView.ViewHolder{
+        TextView textViewName, priceOne,priceTwo,priceThree,priceFour/*, textViewPrice*/;
+        /*        Button decline, accept;*/
+
+
+        public OrderViewHolder(@NonNull View itemView) {
+            super(itemView);
+            textViewName = itemView.findViewById(R.id.Item);
+            priceOne = itemView.findViewById(R.id.price1);
+            priceTwo = itemView.findViewById(R.id.price2);
+            priceThree = itemView.findViewById(R.id.price3);
+            priceFour = itemView.findViewById(R.id.price4);
+
+        }
     }
 }

@@ -6,13 +6,13 @@ public class Order {
     private Boolean assigned;
     private double amount;
 
-    public Order(String id, String rest, String uName, String uPhone, double amount){//*, Boolean assigned*/) {
+    public Order(String id, String rest, String uName, String uPhone, double amount, Boolean assigned){//*, Boolean assigned*/) {
         this.id = id;
         this.rest = rest;
         this.uName = uName;
         this.uPhone = uPhone;
         this.amount = amount;
-        /*  this.assigned = assigned;*/
+         this.assigned = this.assigned;
     }
 
     public String getId() {
@@ -31,9 +31,9 @@ public class Order {
         return uPhone;
     }
 
-    /*  public String getAssigned(){return assigned.toString();}*/
+    public Boolean getAssigned(){return assigned;}
 
     public double getAmount() {
         return amount;
     }
-}
+};

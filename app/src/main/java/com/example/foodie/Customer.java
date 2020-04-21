@@ -79,7 +79,7 @@ public class Customer extends AppCompatActivity {
             public void onClick(View v) {
                 String name = mNameChange.getText().toString().trim();
                 if(name.length()<1){
-                    mNameChange.setError("Set a Name you stupid beach");
+                    mNameChange.setError("Set a Name please");
                 }
                 userID = mFAuth.getCurrentUser().getUid();
                 DocumentReference documentReference = fStore.collection("Customers").document(userID);
@@ -94,7 +94,7 @@ public class Customer extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String phone = mPhoneChange.getText().toString().trim();
-                if (phone.length() <= 6) {
+                if (phone.length() <= 13) {
                     mPhoneChange.setError("Give a proper phone number");
                     return;
                 }

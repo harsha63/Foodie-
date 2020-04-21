@@ -59,11 +59,11 @@ public class MenuList extends AppCompatActivity {
     private static final String TAG = "HELLO";
     RecyclerView recyclerView;
     MenuAdapter adapter;
-    List<MenuObject> M;
+    List<MenuObject> Menul;
     FirebaseAuth mFAuth;
     FirebaseFirestore fStore;
     Button bt;
-    String UserId, RestroID;
+    String RestroID;
 
     public static int[] convertIntegers(List<Long> integers)
     {
@@ -81,17 +81,17 @@ public class MenuList extends AppCompatActivity {
         setContentView(R.layout.menulist);
         fStore = FirebaseFirestore.getInstance();
         mFAuth = FirebaseAuth.getInstance();
-        M = new ArrayList<MenuObject>();
+        Menul = new ArrayList<MenuObject>();
         recyclerView = findViewById(R.id.recyclerView2);
         recyclerView.setHasFixedSize(true);
         bt = findViewById(R.id.order);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        if(M.size()>0){
-            M.clear();
+        if(Menul.size()>0){
+            Menul.clear();
         }
         String userId = mFAuth.getUid();
-        DocumentReference D = fStore.collection("Orders").document(userId);
-        D.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        DocumentReference documentReference = fStore.collection("Orders").document(userId);
+        documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
@@ -99,7 +99,7 @@ public class MenuList extends AppCompatActivity {
                     if (document.exists()) {
                         RestroID = document.getString("RestroID");
                         Log.d(TAG, RestroID+ " is the ID");
-                        fStore.collection("RestaurantList").document(RestroID).collection("FoodItems").get()
+                        fStore.collection("RestaurantList").document(RestroID).collection("RestaurantList/3gqQ9WZtWzRuWZbBv3rg/FoodItems/CUEGvajIce7DIfaXeaa9").get()
                                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                     @SuppressLint("RestrictedApi")
                                     @Override
@@ -120,13 +120,13 @@ public class MenuList extends AppCompatActivity {
                                                 Log.d(TAG,mapElement.getValue().getClass().getName()+"Is the target");
                                                 int[] arr1 = convertIntegers((List<Long>) mapElement.getValue());
                                                 MenuObject restru = new MenuObject(key,arr1);
-                                                M.add(restru);
+                                                Menul.add(restru);
                                                 Log.d(TAG, "MenuListAdded");
                                             }
 
                                         }
-                                        //adapter = new MenuAdapter(MenuList.this,M);
-                                       //recyclerView.setAdapter(adapter);
+                                        adapter = new MenuAdapter(MenuList.this,Menul);
+                                        recyclerView.setAdapter(adapter);
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {

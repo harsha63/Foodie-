@@ -41,6 +41,13 @@
         <activity android:name=".Delivery" />
         <activity android:name=".DeliveryboyDashboard" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".DeliveryGuyOrder"/>
+        <activity android:name=".OTP"/>
+        <activity android:name=".MenuList"/>
+        <activity android:name=".OrderTracking"/>
+        <activity android:name=".RestaurantPage"/>
+        <activity android:name=".CustomerLocation"/>
+
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

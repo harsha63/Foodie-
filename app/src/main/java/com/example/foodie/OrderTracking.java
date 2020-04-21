@@ -17,7 +17,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class OrderTracking extends AppCompatActivity {
-    private static final String TAG = "RRREEEEEEEEEEEEEE";
+    private static final String TAG = "RRREEEEEE";
     TextView Menu,Restaurant,jabla;
     TextView first,second,third,fourth;
     FirebaseAuth mFAuth;

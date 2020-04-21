@@ -2,6 +2,7 @@ package com.example.foodie;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -34,7 +35,7 @@ import pub.devrel.easypermissions.EasyPermissions;
 public class Delivery extends AppCompatActivity implements LocationListener {
     private static final String TAG = "EDIT ACTIVITY" ;
     EditText mNameChange,mPhoneChange,mPassChange,mRadiusChange;
-    Button changePass,changeName,changePhone,mBack, changeRadius, changeLocation;
+    Button changePass,changeName,changePhone,mBack, changeRadius, changeLocation, back;
     FirebaseAuth mFAuth;
 
     FirebaseFirestore fStore;
@@ -75,6 +76,7 @@ public class Delivery extends AppCompatActivity implements LocationListener {
         changePhone = findViewById(R.id.setPhone);
         changeRadius = findViewById(R.id.setRadius);
         changeLocation = findViewById(R.id.setLoc);
+        back=findViewById(R.id.button5);
         mFAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         changePass.setOnClickListener(new View.OnClickListener() {
@@ -150,7 +152,12 @@ public class Delivery extends AppCompatActivity implements LocationListener {
                 Toast.makeText(Delivery.this, "Changed Radius successfully", Toast.LENGTH_SHORT).show();
             }
         });
-
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent((Delivery.this),DeliveryboyDashboard.class));
+            }
+        });
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling

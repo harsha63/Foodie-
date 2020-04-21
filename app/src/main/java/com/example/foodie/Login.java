@@ -213,6 +213,7 @@ public class Login extends AppCompatActivity {
                     }
                 });
     }
+    //Method to put details in the database
     private void getUserDetails(FirebaseUser user, int i){
         userID = mAuth.getCurrentUser().getUid();
         DocumentReference documentReference = fStore.collection("Customers").document(userID);

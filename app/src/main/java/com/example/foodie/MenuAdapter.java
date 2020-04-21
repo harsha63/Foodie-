@@ -79,8 +79,8 @@ public class MenuAdapter extends  RecyclerView.Adapter<MenuAdapter.OrderViewHold
         holder.textViewName.setText(items.getName());
         holder.priceOne.setText(arr[0]+" ");
         holder.priceTwo.setText(arr[1]+" ");
-        holder.priceThree.setText(arr[2]+" ");
-        holder.priceFour.setText(arr[2]+" ");
+        //holder.priceThree.setText(arr[2]+" ");
+        //holder.priceFour.setText(arr[2]+" ");
         holder.priceOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,7 +105,7 @@ public class MenuAdapter extends  RecyclerView.Adapter<MenuAdapter.OrderViewHold
                 Toast.makeText(v.getContext(), MenuList.get(position).getName() + " " +arr[0]+ " Selected!", Toast.LENGTH_SHORT).show();
             }
         });
-        holder.priceThree.setOnClickListener(new View.OnClickListener() {
+        /*holder.priceThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DocumentReference documentReference = fStore.collection("Orders").document(UserID);
@@ -128,7 +128,7 @@ public class MenuAdapter extends  RecyclerView.Adapter<MenuAdapter.OrderViewHold
                 documentReference.set(user, SetOptions.merge());
                 Toast.makeText(v.getContext(), MenuList.get(position).getName() + " " +arr[0]+ " Selected!", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
     }
 

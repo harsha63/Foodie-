@@ -71,7 +71,7 @@ public class DeliveryGuyOrder extends AppCompatActivity {
         }
 
 
-        DocumentReference doc = fStore.collection("Customers").document(DeliveryUser);
+        DocumentReference doc = fStore.collection("Customers").document();
         doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -89,8 +89,8 @@ public class DeliveryGuyOrder extends AppCompatActivity {
                         for (DocumentSnapshot documentSnapshot : task.getResult()) {
                             orders = new Order(documentSnapshot.getString("UserID"),
                                     documentSnapshot.getString("Restaurant"), documentSnapshot.getString("UserName"),
-                                    documentSnapshot.getString("UserPhone"), documentSnapshot.getDouble("Price")/*,
-                                    documentSnapshot.getBoolean("Assigned")*/);
+                                    documentSnapshot.getString("UserPhone"), documentSnapshot.getDouble("Price"),
+                                    documentSnapshot.getBoolean("Assigned"));
                             orderTemporary.add(orders);
                             Log.d(TAG,"Order object name: "+orders.getuName());
                             String Rid = documentSnapshot.getString("RestroID");

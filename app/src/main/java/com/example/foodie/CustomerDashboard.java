@@ -73,8 +73,4 @@ public class CustomerDashboard extends AppCompatActivity {
 
     }
 
-    public void edit(View view) {
-        startActivity(new Intent(getApplicationContext(),Delivery.class));
-        finish();
-    }
 }

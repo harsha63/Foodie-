@@ -73,7 +73,7 @@ public class CustomerLocation extends AppCompatActivity implements LocationListe
         setContentView(R.layout.activity_customer_location);
         mLoc = findViewById(R.id.loc);
         // Initialize the AutocompleteSupportFragment.
-        Places.initialize(getApplicationContext(), getString(R.string.AIzaSyAuaytIA4jTOynsRk6C_9sGoPSSPdqMsnw), Locale.US);
+        Places.initialize(getApplicationContext(), ("AIzaSyDnhsmSUdwl3UKPQnbtW9wbCX9eTnOj4tU"), Locale.US);
         AutocompleteSupportFragment autocompleteFragment = (AutocompleteSupportFragment)
                 getSupportFragmentManager().findFragmentById(R.id.autocomplete_fragment);
 

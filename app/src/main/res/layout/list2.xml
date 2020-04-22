@@ -70,6 +70,6 @@
             android:gravity="center_horizontal"
             android:background="#B0B0B0"
             tools:ignore="HardcodedText"/>
-        
+
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

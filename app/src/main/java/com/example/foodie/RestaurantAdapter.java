@@ -50,8 +50,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//import com.google.api.Context;
-
 public class RestaurantAdapter extends  RecyclerView.Adapter<RestaurantAdapter.OrderViewHolder> {
     private static final String TAG = "ADAPTER CONSTRUCTOR";
     private Context context;

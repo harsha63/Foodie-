@@ -22,7 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import javax.annotation.Nullable;
 
 public class CustomerDashboard extends AppCompatActivity {
-    private static final String TAG = "99999999999999";
+    private static final String TAG = "99999";
     TextView fullName,email;
     Button b,r,order;
     FirebaseAuth fAuth;

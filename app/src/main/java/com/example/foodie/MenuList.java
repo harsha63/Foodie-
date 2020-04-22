@@ -12,7 +12,7 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.MenuAdapter;
+//import androidx.appcompat.view.menu.MenuAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -99,7 +99,7 @@ public class MenuList extends AppCompatActivity {
                     if (document.exists()) {
                         RestroID = document.getString("RestroID");
                         Log.d(TAG, RestroID+ " is the ID");
-                        fStore.collection("RestaurantList").document(RestroID).collection("RestaurantList/3gqQ9WZtWzRuWZbBv3rg/FoodItems/CUEGvajIce7DIfaXeaa9").get()
+                        fStore.collection("RestaurantList").document(RestroID).collection("FoodItems").get()
                                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                     @SuppressLint("RestrictedApi")
                                     @Override
@@ -125,7 +125,7 @@ public class MenuList extends AppCompatActivity {
                                             }
 
                                         }
-                                        adapter = new MenuAdapter(MenuList.this,Menul);
+                                        adapter = new com.example.foodie.MenuAdapter(MenuList.this,Menul);
                                         recyclerView.setAdapter(adapter);
                                     }
                                 })

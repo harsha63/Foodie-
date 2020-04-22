@@ -46,7 +46,9 @@
         <activity android:name=".MenuList"/>
         <activity android:name=".OrderTracking"/>
         <activity android:name=".RestaurantPage"/>
-        <activity android:name=".CustomerLocation"/>
+        <activity
+            android:name=".CustomerLocation"
+            android:exported="true" ></activity>
 
         <activity android:name=".Login">
             <intent-filter>

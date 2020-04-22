@@ -79,7 +79,7 @@ public class MenuAdapter extends  RecyclerView.Adapter<MenuAdapter.OrderViewHold
         holder.textViewName.setText(items.getName());
         holder.priceOne.setText(arr[0]+" ");
         holder.priceTwo.setText(arr[1]+" ");
-        //holder.priceThree.setText(arr[2]+" ");
+        holder.priceThree.setText(arr[2]+" ");
         //holder.priceFour.setText(arr[2]+" ");
         holder.priceOne.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,7 +105,7 @@ public class MenuAdapter extends  RecyclerView.Adapter<MenuAdapter.OrderViewHold
                 Toast.makeText(v.getContext(), MenuList.get(position).getName() + " " +arr[0]+ " Selected!", Toast.LENGTH_SHORT).show();
             }
         });
-        /*holder.priceThree.setOnClickListener(new View.OnClickListener() {
+        holder.priceThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DocumentReference documentReference = fStore.collection("Orders").document(UserID);
@@ -117,18 +117,7 @@ public class MenuAdapter extends  RecyclerView.Adapter<MenuAdapter.OrderViewHold
                 Toast.makeText(v.getContext(), MenuList.get(position).getName() + " " +arr[0]+ " Selected!", Toast.LENGTH_SHORT).show();
             }
         });
-        holder.priceFour.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DocumentReference documentReference = fStore.collection("Orders").document(UserID);
-                Map<String,Object> user = new HashMap<>();
-                user.put("MenuItem",MenuList.get(position).getName());
-                int[] arr = MenuList.get(position).getPrice();
-                user.put("Price",arr[2]);
-                documentReference.set(user, SetOptions.merge());
-                Toast.makeText(v.getContext(), MenuList.get(position).getName() + " " +arr[0]+ " Selected!", Toast.LENGTH_SHORT).show();
-            }
-        });*/
+
 
     }
 
@@ -148,7 +137,7 @@ public class MenuAdapter extends  RecyclerView.Adapter<MenuAdapter.OrderViewHold
             priceOne = itemView.findViewById(R.id.price1);
             priceTwo = itemView.findViewById(R.id.price2);
             priceThree = itemView.findViewById(R.id.price3);
-            priceFour = itemView.findViewById(R.id.price4);
+            //priceFour = itemView.findViewById(R.id.price4);
 
         }
     }

@@ -152,7 +152,12 @@ public class OrderAdapter extends  RecyclerView.Adapter<OrderAdapter.OrderViewHo
             textViewPhone = itemView.findViewById(R.id.custPhone);
 //            decline = itemView.findViewById(R.id.decline);
             accept = itemView.findViewById(R.id.accept);
-            /*            textViewPrice = itemView.findViewById(R.id.textViewPrice);*/
+            accept.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    accept.getContext().startActivity(new Intent(accept.getContext(),OrderSummary.class));
+                }
+            });
         }
     }
 }

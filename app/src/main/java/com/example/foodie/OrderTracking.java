@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -38,7 +37,7 @@ public class OrderTracking extends AppCompatActivity {
         first = findViewById(R.id.Confirmed);
         second = findViewById(R.id.Assign);
         third = findViewById(R.id.pickup);
-        fourth = findViewById(R.id.delivered);
+        fourth = findViewById(R.id.otp);
 
 
         mFAuth = FirebaseAuth.getInstance();

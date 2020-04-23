@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OrderSummary"
+    android:background="@drawable/foo">
+
+    <TextView
+        android:id="@+id/order1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#120E0E"
+        android:gravity="center_horizontal"
+        android:text="Order Summary"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        tools:ignore="HardcodedText" />
+    <TextView
+        android:id="@+id/cust1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Customer Name:"
+        android:textSize="20sp"
+        android:layout_below="@id/order1"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/custP1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Customer Phone:"
+        android:textSize="20sp"
+        android:layout_below="@id/cust1"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/price00"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price:"
+        android:textSize="20sp"
+        android:layout_below="@id/custP1"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        tools:ignore="HardcodedText" />
+    <TextView
+        android:id="@+id/rest00"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Restaurant Name:"
+        android:textSize="20sp"
+        android:layout_below="@id/price00"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        tools:ignore="HardcodedText" />
+    <TextView
+        android:id="@+id/food00"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Food Item:"
+        android:textSize="20sp"
+        android:layout_below="@id/rest00"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/custName1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/cust1"
+        android:layout_toEndOf="@id/cust1"
+        android:layout_below="@id/order1"
+        android:layout_marginTop="10dp"
+        android:text="name"
+        android:textSize="20sp"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/custPhone1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/custP1"
+        android:layout_toEndOf="@id/custP1"
+        android:layout_below="@id/custName1"
+        android:layout_marginTop="10dp"
+        android:text="phone"
+        android:textSize="20sp"
+        tools:ignore="HardcodedText" />
+    <TextView
+        android:id="@+id/rest11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/rest00"
+        android:layout_toEndOf="@id/rest00"
+        android:layout_below="@id/price11"
+        android:layout_marginTop="10dp"
+        android:text="name"
+        android:textSize="20sp"
+        tools:ignore="HardcodedText" />
+    <TextView
+        android:id="@+id/price11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/price00"
+        android:layout_toEndOf="@id/price00"
+        android:layout_below="@id/custPhone1"
+        android:layout_marginTop="10dp"
+        android:text="phone"
+        android:textSize="20sp"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/otp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="67dp"
+        android:layout_marginRight="67dp"
+        android:layout_marginBottom="116dp"
+        android:text="At your Door Step!"
+        android:textSize="25sp"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="128dp"
+        android:layout_marginLeft="128dp"
+        android:layout_marginTop="213dp"
+        android:text="TextView" />
+
+</RelativeLayout>

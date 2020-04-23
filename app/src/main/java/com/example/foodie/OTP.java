@@ -22,6 +22,7 @@ public class OTP extends AppCompatActivity {
 
     FirebaseAuth auth;
     EditText e1,e2;
+
     PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallback;
     String verification_code;
 

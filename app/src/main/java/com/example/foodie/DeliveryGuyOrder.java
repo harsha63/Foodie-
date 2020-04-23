@@ -71,7 +71,7 @@ public class DeliveryGuyOrder extends AppCompatActivity {
         }
 
 
-        DocumentReference doc = fStore.collection("Customers").document();
+        DocumentReference doc = fStore.collection("Customers").document(DeliveryUser);
         doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -94,7 +94,7 @@ public class DeliveryGuyOrder extends AppCompatActivity {
                             orderTemporary.add(orders);
                             Log.d(TAG,"Order object name: "+orders.getuName());
                             String Rid = documentSnapshot.getString("RestroID");
-                            DocumentReference documentReference = fStore.collection("Restaurants").document(Rid);
+                            DocumentReference documentReference = fStore.collection("RestaurantList").document(Rid);
                             documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                 @Override
                                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -179,13 +179,13 @@ public class DeliveryGuyOrder extends AppCompatActivity {
                 if(task.isSuccessful()){
                     for(QueryDocumentSnapshot document : task.getResult()){
                         List list = document.toObject(List.class);
-                        arrayList.add(list);
+                        ordersList.add((Order) list);
                     }
                 }
             }
         });
-*/
 
+*/
 
     }
 }

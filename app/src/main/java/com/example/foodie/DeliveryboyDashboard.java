@@ -41,6 +41,15 @@ public class DeliveryboyDashboard extends AppCompatActivity {
         fStore = FirebaseFirestore.getInstance();
 
         userId = fAuth.getCurrentUser().getUid();
+        DocumentReference documentReference = fStore.collection("Customers").document(userId);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                fullName.setText(documentSnapshot.getString("fName"));
+                Log.d(TAG,documentSnapshot.getString("fName")+"Hello");
+                email.setText(documentSnapshot.getString("email"));
+            }
+        });
 
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,15 +61,6 @@ public class DeliveryboyDashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(DeliveryboyDashboard.this,DeliveryGuyOrder.class));
-            }
-        });
-        DocumentReference documentReference = fStore.collection("Customers").document(userId);
-        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                fullName.setText(documentSnapshot.getString("fName"));
-                Log.d(TAG,documentSnapshot.getString("fName")+"Hello");
-                email.setText(documentSnapshot.getString("email"));
             }
         });
 

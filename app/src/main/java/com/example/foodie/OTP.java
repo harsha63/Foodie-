@@ -29,7 +29,7 @@ public class OTP extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.otp);
 
         e1=(EditText)findViewById((R.id.editText));
         e2=(EditText)findViewById(R.id.editText2);
@@ -70,7 +70,7 @@ public class OTP extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful())
                         {
-                            Toast.makeText(getApplicationContext(),"user signed in successfully",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"Customer verified!",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

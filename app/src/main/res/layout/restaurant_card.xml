@@ -25,12 +25,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@id/image1"
             android:layout_toEndOf="@id/image1"
-            android:textSize="22sp"
+            android:layout_toRightOf="@id/image1"
+            android:fontFamily="casual"
+            android:maxLength="25"
             android:text="Spiciya"
             android:textColor="@color/colorPrimaryDark"
-            android:maxLength="25"
+            android:textSize="18sp"
+            android:textStyle="bold|italic"
             tools:ignore="HardcodedText" />
 
         <TextView

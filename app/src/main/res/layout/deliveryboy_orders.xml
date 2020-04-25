@@ -8,17 +8,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recyclerView"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="60dp"/>
-    <Button
-        android:id="@+id/accept1"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:text="ACCEPT and Deliver"
-        android:textSize="20sp"
-        android:background="#7BE530"
-        />
+        android:id="@+id/recyclerView" />
+
 
 </RelativeLayout>

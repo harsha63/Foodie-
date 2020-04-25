@@ -9,10 +9,12 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Recycler_restro"
         android:layout_width="match_parent"
-        android:layout_height="650dp"
+        android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="80dp"
         android:background="#B0B0B0"/>
 
     <Button

@@ -153,11 +153,11 @@ public class OrderAdapter extends  RecyclerView.Adapter<OrderAdapter.OrderViewHo
 //            decline = itemView.findViewById(R.id.decline);
             accept = itemView.findViewById(R.id.accept);
             accept.setOnClickListener(new View.OnClickListener() {
-                @Override
+               @Override
                 public void onClick(View v) {
                     accept.getContext().startActivity(new Intent(accept.getContext(),OrderSummary.class));
                 }
             });
         }
-    }
-}
+    }}
+

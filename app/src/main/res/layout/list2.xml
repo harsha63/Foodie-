@@ -19,9 +19,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:background="#FF00FF"
+            android:background="#A500A5"
             android:text="TextView"
             android:textSize="30sp"
+            android:textColor="#FFFFFF"
             android:textAlignment="center"
             android:gravity="center_horizontal"
             tools:ignore="HardcodedText" />
@@ -31,29 +32,29 @@
             android:id="@+id/size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/Item"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_marginStart="50dp"
             android:layout_marginLeft="50dp"
-            android:layout_below="@id/Item"
             android:text="Size"
             android:textSize="30sp"
-            android:textStyle="italic"
+            android:textStyle="bold|italic"
             tools:ignore="HardcodedText" />
+
         <TextView
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/Item"
             android:layout_marginStart="80dp"
             android:layout_marginLeft="80dp"
-            android:layout_below="@id/Item"
-            android:layout_toRightOf="@id/size"
             android:layout_toEndOf="@id/size"
+            android:layout_toRightOf="@id/size"
             android:text="Prize"
             android:textSize="30sp"
-            android:textStyle="italic"
-            tools:ignore="HardcodedText"
-            />
+            android:textStyle="bold|italic"
+            tools:ignore="HardcodedText" />
         <TextView
             android:id="@+id/small"
             android:layout_width="wrap_content"

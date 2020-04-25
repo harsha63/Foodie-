@@ -47,7 +47,7 @@ public class OrderSummary extends AppCompatActivity{
         fAuth= FirebaseAuth.getInstance();
         fStore= FirebaseFirestore.getInstance();
 
-        DocumentReference documentReference = fStore.collection("Orders").document(UserId);
+         DocumentReference documentReference = fStore.collection("Orders").document(UserId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
@@ -56,6 +56,9 @@ public class OrderSummary extends AppCompatActivity{
                 rest.setText(documentSnapshot.getString("Restaurant"));
             }
         });
+
+
+
         DocumentReference documentReference1 = fStore.collection("Customers").document(UserId);
         documentReference1.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override

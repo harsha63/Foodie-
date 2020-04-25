@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -35,6 +38,7 @@ public class DeliveryGuyOrder extends AppCompatActivity {
     List<Order>  ordersList,orderTemporary;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
+    Button ordersummary;
     double lat1,long1,lat2,long2, Radius;
     ArrayList<Double>latitude = new ArrayList<>();
     ArrayList<Double>longitude = new ArrayList<>();
@@ -65,11 +69,12 @@ public class DeliveryGuyOrder extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //ordersummary=findViewById(R.id.button7);
+
         DeliveryUser = FirebaseAuth.getInstance().getUid();
         if(ordersList.size()>0){
             ordersList.clear();
         }
-
 
         DocumentReference doc = fStore.collection("Customers").document(DeliveryUser);
         doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {

@@ -45,6 +45,7 @@
         <activity android:name=".DeliveryboyDashboard" />
         <activity android:name=".OrderSummary"/>
 
+
         <activity android:name=".MainActivity" />
         <activity
             android:name=".DeliveryGuyOrder"
@@ -65,6 +66,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity android:name=".LocationMap"/>
+
+
 
     </application>
 

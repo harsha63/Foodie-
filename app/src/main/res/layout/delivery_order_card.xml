@@ -8,23 +8,25 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <TextView
             android:id="@+id/RestroName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="#02024E"
             android:text="RestroName"
-            android:textSize="25sp"
-            android:background="#0000FF"
-            android:textColor="#FFFFFF"
             android:textAlignment="center"
-            android:layout_gravity="center_horizontal" />
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/custName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CustomerName"
             android:layout_below="@id/RestroName"
-            android:textSize="15sp"
+            android:textSize="20sp"
             android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp" />
         <TextView
@@ -33,7 +35,7 @@
             android:layout_height="wrap_content"
             android:text="CustomerPhone"
             android:layout_below="@id/custName"
-            android:textSize="15sp"
+            android:textSize="20sp"
             android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp" />
         <TextView
@@ -46,26 +48,28 @@
             android:textStyle="bold"
             android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp" />
+
         <Button
             android:id="@+id/accept"
             android:layout_width="220dp"
             android:layout_height="40dp"
-            android:text="ACCEPT"
-            android:textSize="30sp"
-            android:background="#00FF00"
             android:layout_below="@id/price"
+            android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp" />
+            android:background="#A8E37F"
+            android:text="ACCEPT"
+            android:textSize="30sp" />
+
         <Button
             android:id="@+id/decline"
             android:layout_width="220dp"
             android:layout_height="40dp"
-            android:text="DECLINE"
-            android:textSize="30sp"
-            android:background="#FF0000"
             android:layout_below="@id/price"
+            android:layout_toEndOf="@id/accept"
             android:layout_toRightOf="@id/accept"
-            android:layout_toEndOf="@id/accept" />
+            android:background="#F16161"
+            android:text="DECLINE"
+            android:textSize="30sp" />
 
 
     </RelativeLayout>

@@ -63,7 +63,7 @@ public class DeliveryGuyOrder extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.deliveryboy_orders);
-        accept=findViewById(R.id.accept1);
+        //accept=findViewById(R.id.accept1);
         Log.d(TAG,"The distance that comes out is this");
         fStore = FirebaseFirestore.getInstance();
         ordersList = new ArrayList<>();

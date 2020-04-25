@@ -26,14 +26,13 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import javax.annotation.Nullable;
 
 public class OrderSummary extends AppCompatActivity{
-    private static final String TAG ="HIII";
-    Button otp,f;
-    String UserId;
+    private static final String TAG ="HIIIIIIIIIIIIIIIIIIII";
+    Button otp;
+    //String UserId;
     TextView price, name, ph,rest,food;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-
-
+    //String UserId =  getIntent().getStringExtra("orderID");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +45,13 @@ public class OrderSummary extends AppCompatActivity{
         rest=findViewById(R.id.rest11);
         fAuth= FirebaseAuth.getInstance();
         fStore= FirebaseFirestore.getInstance();
-        UserId = fAuth.getUid();
+        //UserId = fAuth.getUid();
+
+        Log.d(TAG, "getIncomingIntent: found intent extra");
+        String UserId =  getIntent().getStringExtra("orderID");
+
+        Log.d(TAG, "onCreate: userID: " + UserId);
+
 
          DocumentReference documentReference = fStore.collection("Orders").document(UserId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
@@ -55,6 +60,7 @@ public class OrderSummary extends AppCompatActivity{
                 price.setText(String.valueOf(documentSnapshot.getDouble("Price")));
                 food.setText(documentSnapshot.getString("MenuItem"));
                 rest.setText(documentSnapshot.getString("Restaurant"));
+                name.setText(documentSnapshot.getString("UserName"));
             }
         });
 

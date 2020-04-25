@@ -68,7 +68,7 @@ public class OrderAdapter extends  RecyclerView.Adapter<OrderAdapter.OrderViewHo
         holder.textViewPhone.setText(orders.getuPhone());
         holder.textViewPrice.setText(String.valueOf(orders.getAmount()));
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(v.getContext(), ordersList.get(position).getuName() + " " + "Selected!", Toast.LENGTH_SHORT).show();
@@ -76,11 +76,18 @@ public class OrderAdapter extends  RecyclerView.Adapter<OrderAdapter.OrderViewHo
                 fStore = FirebaseFirestore.getInstance();
                 final String userId = mFAuth.getUid();
                 od = ordersList.get(position);
-                DocumentReference documentReference = fStore.collection("Orders").document(od.getId());
+                String orderID = od.getId();
+                DocumentReference documentReference = fStore.collection("Orders").document(orderID);
                 Map<String,Object> user = new HashMap<>();
                 user.put("DeliveryId",userId);
                 user.put("Assigned",true);
                 documentReference.set(user, SetOptions.merge());
+
+                Intent intent = new Intent(context, OrderSummary.class);
+                intent.putExtra("orderID", orderID);
+                context.startActivity(intent);
+
+
                 documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -154,7 +161,7 @@ public class OrderAdapter extends  RecyclerView.Adapter<OrderAdapter.OrderViewHo
             textViewPhone = itemView.findViewById(R.id.custPhone);
             textViewPrice = itemView.findViewById(R.id.price);
             //decline = itemView.findViewById(R.id.decline);
-            //accept = itemView.findViewById(R.id.accept);
+            accept = itemView.findViewById(R.id.accept);
 
 
 

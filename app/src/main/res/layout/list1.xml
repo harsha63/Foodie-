@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -16,9 +14,9 @@
     android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/restPhoto"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/ic_free_breakfast_black_24dp"/>
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/ic_restaurant_menu"/>
         <TextView android:id="@+id/Minion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,8 +28,8 @@
             android:layout_toEndOf="@id/restPhoto"
             tools:ignore="HardcodedText" />
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:src="@drawable/ic_arrow_forward"/>

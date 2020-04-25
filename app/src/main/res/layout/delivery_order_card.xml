@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="RestroName"
-            android:textSize="25sp"
+            android:textSize="30sp"
             android:background="#0000FF"
             android:textColor="#FFFFFF"
             android:textAlignment="center"
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:text="CustomerName"
             android:layout_below="@id/RestroName"
-            android:textSize="15sp"
+            android:textSize="20sp"
             android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp" />
         <TextView
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:text="CustomerPhone"
             android:layout_below="@id/custName"
-            android:textSize="15sp"
+            android:textSize="20sp"
             android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp" />
         <TextView
@@ -52,7 +52,7 @@
             android:layout_height="40dp"
             android:text="ACCEPT"
             android:textSize="30sp"
-            android:background="#00FF00"
+            android:background="#7BE530"
             android:layout_below="@id/price"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp" />
@@ -62,7 +62,7 @@
             android:layout_height="40dp"
             android:text="DECLINE"
             android:textSize="30sp"
-            android:background="#FF0000"
+            android:background="#D50000"
             android:layout_below="@id/price"
             android:layout_toRightOf="@id/accept"
             android:layout_toEndOf="@id/accept" />

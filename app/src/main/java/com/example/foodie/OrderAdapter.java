@@ -81,6 +81,7 @@ public class OrderAdapter extends  RecyclerView.Adapter<OrderAdapter.OrderViewHo
                 Map<String,Object> user = new HashMap<>();
                 user.put("DeliveryId",userId);
                 user.put("Assigned",true);
+                user.put("Status",3);
                 documentReference.set(user, SetOptions.merge());
 
                 Intent intent = new Intent(context, OrderSummary.class);
@@ -117,7 +118,7 @@ public class OrderAdapter extends  RecyclerView.Adapter<OrderAdapter.OrderViewHo
                                                 DocumentReference documentReference = fStore.collection("Orders").document(od.getId());
                                                 Map<String,Object> users = new HashMap<>();
                                                 users.put("OTP",OTP);
-                                                users.put("Status",2);
+
                                                 documentReference.set(users, SetOptions.merge());
 
                                             }

@@ -141,7 +141,7 @@ public class DeliveryGuyOrder extends AppCompatActivity {
                                                             }
                                                             count1++;
                                                             if(count1==count) {
-                                                                Log.d(TAG,"We are in the endgame");
+                                                                Log.d(TAG,"We are in the end");
                                                                 adapter = new OrderAdapter(DeliveryGuyOrder.this, ordersList);
                                                                 recyclerView.setAdapter(adapter);
                                                             }

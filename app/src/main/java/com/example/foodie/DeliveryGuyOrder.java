@@ -46,6 +46,7 @@ public class DeliveryGuyOrder extends AppCompatActivity {
     Order orders;
     int count = 0;
     int count1 = 0;
+    Button accept;
 
     public static void wait(int ms){
         try
@@ -62,6 +63,7 @@ public class DeliveryGuyOrder extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.deliveryboy_orders);
+        accept=findViewById(R.id.accept1);
         Log.d(TAG,"The distance that comes out is this");
         fStore = FirebaseFirestore.getInstance();
         ordersList = new ArrayList<>();
@@ -135,8 +137,8 @@ public class DeliveryGuyOrder extends AppCompatActivity {
 
                                                             if (CustLoc.distanceTo(RestLoc) / 1000 < Radius) {
                                                                 ordersList.add(orderTemporary.get(count1));
-                                                                //Log.d(TAG, "The distance that comes out is " + CustLoc.distanceTo(RestLoc) / 1000 + " Yes. " + count1 + " " + orders.getRest());
-                                                                //Log.d(TAG,long1+" "+lat1);
+                                                                Log.d(TAG, "The distance that comes out is " + CustLoc.distanceTo(RestLoc) / 1000 + " Yes. " + count1 + " " + orders.getRest());
+                                                                Log.d(TAG,long1+" "+lat1);
 
                                                             }
                                                             count1++;
@@ -189,8 +191,13 @@ public class DeliveryGuyOrder extends AppCompatActivity {
                 }
             }
         });
-
 */
+        accept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),OrderSummary.class));
+            }
+        });
 
     }
 }

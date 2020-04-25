@@ -46,12 +46,13 @@ public class OrderSummary extends AppCompatActivity{
         rest=findViewById(R.id.rest11);
         fAuth= FirebaseAuth.getInstance();
         fStore= FirebaseFirestore.getInstance();
+        UserId = fAuth.getUid();
 
          DocumentReference documentReference = fStore.collection("Orders").document(UserId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                price.setText(documentSnapshot.getString("Price"));
+                price.setText(String.valueOf(documentSnapshot.getDouble("Price")));
                 food.setText(documentSnapshot.getString("MenuItem"));
                 rest.setText(documentSnapshot.getString("Restaurant"));
             }
@@ -68,8 +69,6 @@ public class OrderSummary extends AppCompatActivity{
                 ph.setText(documentSnapshot.getString("Phone number"));
             }
         });
-
-
 
         otp.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -66,10 +66,12 @@ public class OrderAdapter extends  RecyclerView.Adapter<OrderAdapter.OrderViewHo
         holder.textViewRest.setText(orders.getRest());
         holder.textViewuname.setText(orders.getuName());
         holder.textViewPhone.setText(orders.getuPhone());
+        holder.textViewPrice.setText(String.valueOf(orders.getAmount()));
 
-        holder.accept.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(v.getContext(), ordersList.get(position).getuName() + " " + "Selected!", Toast.LENGTH_SHORT).show();
                 mFAuth = FirebaseAuth.getInstance();
                 fStore = FirebaseFirestore.getInstance();
                 final String userId = mFAuth.getUid();
@@ -96,10 +98,9 @@ public class OrderAdapter extends  RecyclerView.Adapter<OrderAdapter.OrderViewHo
                                             if(User.exists()){
                                                 Email = User.getString("email");
                                                 OTP = String.valueOf(generateRandomDigits());
-
                                                 try{
-
                                                     enableStrictMode();
+
                                                     //Mailer.send("obliviousalwaysforever@gmail.com","wha1sup??",Email,"Order OTP",OTP+" Is yout OTP. Do you understand?");
 
                                                 }
@@ -130,6 +131,7 @@ public class OrderAdapter extends  RecyclerView.Adapter<OrderAdapter.OrderViewHo
 
             }
         });
+
         /*     holder.textViewPrice.setText((int) orders.getAmount());*/
     }
 
@@ -141,7 +143,7 @@ public class OrderAdapter extends  RecyclerView.Adapter<OrderAdapter.OrderViewHo
 
 
     class OrderViewHolder extends RecyclerView.ViewHolder{
-        TextView textViewRest, textViewuname, textViewPhone/*, textViewPrice*/;
+        TextView textViewRest, textViewuname, textViewPhone, textViewPrice;
         Button decline, accept;
 
 
@@ -150,14 +152,12 @@ public class OrderAdapter extends  RecyclerView.Adapter<OrderAdapter.OrderViewHo
             textViewRest = itemView.findViewById(R.id.RestroName);
             textViewuname = itemView.findViewById(R.id.custName);
             textViewPhone = itemView.findViewById(R.id.custPhone);
-//            decline = itemView.findViewById(R.id.decline);
-            accept = itemView.findViewById(R.id.accept);
-            accept.setOnClickListener(new View.OnClickListener() {
-               @Override
-                public void onClick(View v) {
-                    accept.getContext().startActivity(new Intent(accept.getContext(),OrderSummary.class));
-                }
-            });
-        }
-    }}
+            textViewPrice = itemView.findViewById(R.id.price);
+            //decline = itemView.findViewById(R.id.decline);
+            //accept = itemView.findViewById(R.id.accept);
 
+
+
+        }
+    }
+}

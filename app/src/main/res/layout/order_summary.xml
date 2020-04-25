@@ -148,11 +148,11 @@
         tools:ignore="HardcodedText" />
 
     <ImageView
-        android:layout_width="392dp"
-        android:layout_height="193dp"
+        android:layout_width="407dp"
+        android:layout_height="224dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="176dp"
-        android:background="@drawable/summary-badge"/>
+        android:background="@drawable/summary_badge_doc1" />
 
 </RelativeLayout>

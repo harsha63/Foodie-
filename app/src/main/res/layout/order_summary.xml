@@ -117,9 +117,23 @@
         android:layout_toEndOf="@id/price00"
         android:layout_below="@id/custPhone1"
         android:layout_marginTop="10dp"
-        android:text="phone"
+        android:text="price"
         android:textSize="20sp"
         tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/price22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/price11"
+        android:layout_toEndOf="@id/price11"
+        android:layout_below="@id/custPhone1"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:text="del price"
+        android:textSize="20sp"
+        tools:ignore="HardcodedText"
+        android:layout_marginStart="20dp" />
 
     <Button
         android:id="@+id/otp"

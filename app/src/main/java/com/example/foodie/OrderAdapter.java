@@ -37,10 +37,12 @@ public class OrderAdapter extends  RecyclerView.Adapter<OrderAdapter.OrderViewHo
     String Email;
     String OTP;
     Order od;
+    double dist;
 
-    public OrderAdapter(Context context, List<Order> ordersList) {
+    public OrderAdapter(Context context, List<Order> ordersList, double dist) {
         this.context = context;
         this.ordersList = ordersList;
+        this.dist = dist;
     }
     public static int generateRandomDigits() {
         int m = (int) Math.pow(10, 3);
@@ -82,6 +84,7 @@ public class OrderAdapter extends  RecyclerView.Adapter<OrderAdapter.OrderViewHo
                 user.put("DeliveryId",userId);
                 user.put("Assigned",true);
                 user.put("Status",3);
+                user.put("Delivery Price", dist/10);
                 documentReference.set(user, SetOptions.merge());
 
                 Intent intent = new Intent(context, OrderSummary.class);

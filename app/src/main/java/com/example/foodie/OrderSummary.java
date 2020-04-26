@@ -29,7 +29,7 @@ public class OrderSummary extends AppCompatActivity{
     private static final String TAG ="HIIIIIIIIIIIIIIIIIIII";
     Button otp;
     //String UserId;
-    TextView price, name, ph,rest,food;
+    TextView price, name, ph,rest,food, delPrice;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     //String UserId =  getIntent().getStringExtra("orderID");
@@ -43,6 +43,7 @@ public class OrderSummary extends AppCompatActivity{
         ph=findViewById(R.id.custPhone1);
         food=findViewById(R.id.textView8);
         rest=findViewById(R.id.rest11);
+        delPrice = findViewById(R.id.price22);
         fAuth= FirebaseAuth.getInstance();
         fStore= FirebaseFirestore.getInstance();
         //UserId = fAuth.getUid();
@@ -61,6 +62,7 @@ public class OrderSummary extends AppCompatActivity{
                 food.setText(documentSnapshot.getString("MenuItem"));
                 rest.setText(documentSnapshot.getString("Restaurant"));
                 name.setText(documentSnapshot.getString("UserName"));
+                delPrice.setText(String.valueOf(documentSnapshot.getDouble("Delivery Price")));
             }
         });
 

@@ -133,7 +133,7 @@ public class DeliveryGuyOrder extends AppCompatActivity {
                                                             CustLoc.setLongitude(long2);
 
                                                             Log.d(TAG, "The distance that comes out is " + CustLoc.distanceTo(RestLoc) / 1000 + " Yes. " + count1 + " " + orders.getRest());
-
+                                                            double dist = CustLoc.distanceTo(RestLoc)/1000;
 
                                                             if (CustLoc.distanceTo(RestLoc) / 1000 < Radius) {
                                                                 ordersList.add(orderTemporary.get(count1));
@@ -144,7 +144,7 @@ public class DeliveryGuyOrder extends AppCompatActivity {
                                                             count1++;
                                                             if(count1==count) {
                                                                 Log.d(TAG,"We are in the end");
-                                                                adapter = new OrderAdapter(DeliveryGuyOrder.this, ordersList);
+                                                                adapter = new OrderAdapter(DeliveryGuyOrder.this, ordersList, dist);
                                                                 recyclerView.setAdapter(adapter);
                                                             }
                                                         }
@@ -192,12 +192,12 @@ public class DeliveryGuyOrder extends AppCompatActivity {
             }
         });
 */
-        accept.setOnClickListener(new View.OnClickListener() {
+/*        accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),OrderSummary.class));
             }
-        });
+        });*/
 
     }
 }
